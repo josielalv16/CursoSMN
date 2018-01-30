@@ -143,6 +143,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -189,6 +190,12 @@
     <Content Include="Lib\fonts\roboto\Roboto-Thin.woff" />
     <Content Include="Lib\fonts\roboto\Roboto-Thin.woff2" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CursoFeriasSMN.Application\CursoFeriasSMN.Application.csproj">
+      <Project>{46d1bfe7-466f-49ea-95b5-77e22fa2fed6}</Project>
+      <Name>CursoFeriasSMN.Application</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
