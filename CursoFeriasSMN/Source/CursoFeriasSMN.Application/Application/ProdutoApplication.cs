@@ -12,7 +12,7 @@ namespace CursoFeriasSMN.Application.Application
         {
             using (var client = new HttpClient())
             {
-                var response = client.GetAsync($"{_enderecoApi}/listaProduto").Result;
+                var response = client.GetAsync($"{_enderecoApi}/listaProdutos").Result;
                 return new Response<IEnumerable<ProdutoModel>>(response.Content.ReadAsStringAsync().Result, response.StatusCode);
             }
         }
