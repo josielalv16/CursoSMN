@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<CursoFeriasSMN.Application.Models.ProdutoModel>
-    
+
 @{ Layout = null;}
+
 
 <table class="striped" id="gridProdutos">
     <thead>
@@ -17,14 +18,32 @@
     </tr>
     </thead>
     <tbody>
-        @foreach (var produto in Model)
-        {
+    @foreach (var produto in Model)
+    {
         <tr>
             <td>@produto.CodigoProduto</td>
             <td>@produto.Nome</td>
             <td>@produto.Preco</td>
             <td>@produto.Estoque</td>
+            <td>
+                <a class="btn waves waves-effect" onclick="DeletaProduto(@produto.CodigoProduto)">
+                    <i class="material-icons">delete_forever</i>
+                </a>
+            </td>
         </tr>
-        }
+    }
     </tbody>
 </table>
+
+<script>
+    function DeletaProduto(codigoProduto) {
+        $.get('@Url.Action("DeletaProduto")',
+            {
+                codigoProduto: codigoProduto
+            }).done(function(data) {
+                $("#tableProdutos").html(data);
+            }).fail(function () {
+                Materialize.toast("Algo deu errado", 4000);
+            });
+    }
+</script>

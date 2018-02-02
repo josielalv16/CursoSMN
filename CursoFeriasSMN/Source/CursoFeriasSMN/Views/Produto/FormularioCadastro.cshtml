@@ -7,7 +7,7 @@
             @using (Ajax.BeginForm("CadastrarProduto", "Produto", new AjaxOptions
             {
                 HttpMethod = "POST",
-                OnSuccess = "RecarregaGridProdutos(data)",
+                OnSuccess = "RecarregaGridProdutos(mensagem)",
                 OnFailure = "Error(xhr)"
             }))
             {
@@ -42,9 +42,10 @@
 
     $('#txtValorProduto').mask("#.##0,00", { reverse: true });
 
-    function RecarregaGridProdutos(data) {
+    function RecarregaGridProdutos(mensagem) {
+        
         //Exibindo um feedback de sucesso
-        Materialize.toast(data, 1000);
+        Materialize.toast(mensagem, 1000);
 
         //Fazendo a requisição no método que lista os produtos
         $.get('@Url.Action("ListarProdutos","Produto")')

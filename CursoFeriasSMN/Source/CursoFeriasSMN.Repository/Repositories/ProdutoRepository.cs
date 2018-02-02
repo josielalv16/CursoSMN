@@ -47,5 +47,21 @@ namespace CursoFeriasSMN.Repository.Repositories
 
             return null;
         }
+
+        public string DeletarProduto(int codigoProduto)
+        {
+            ExecuteProcedure("SP_DelProduto");
+            AddParameter("@CodigoProduto", codigoProduto);
+
+            var retorno = ExecuteNonQueryWithReturn();
+
+            switch (retorno)
+            {
+                case 1: return "Exclusão não permitida, o produto esta vinculada a uma venda";
+                case 2: return "Erro ao excluir o produto";
+            }
+
+            return null;
+        }
     }
 }

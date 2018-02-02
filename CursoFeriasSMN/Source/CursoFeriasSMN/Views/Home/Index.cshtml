@@ -29,6 +29,16 @@
 </div>
 
 <script>
+    var mensagemSucesso = "@ViewBag.Resultado";
+    var mensagemErro = "@ViewBag.Erro";
+
+    if (mensagemSucesso != "") {
+        Materialize.toast(mensagemSucesso, 4000);
+    }
+
+    if (mensagemErro != "") {
+        Materialize.toast(mensagemSucesso, 4000);
+    }
 
     //Trazendo a lista de produtos
     $.get('@Url.Action("ListarProdutos", "Produto")')

@@ -36,10 +36,27 @@ namespace CursoFeriasSMN.Controllers
             {
                 Response.StatusCode = (int)HttpStatusCode.BadRequest;
                 Response.TrySkipIisCustomErrors = true;
-                return Content(response.ContentAsString);
+                ViewBag.Erro = response.Content;
+                return View("../Home/Index");
             }
 
-            return Content(response.Content);
+            ViewBag.Resultado = response.Content;
+            return View("../Home/Index");
+        }
+
+        public ActionResult DeletaProduto(int codigoProduto)
+        {
+            var response = _produtoApplication.DeletaProduto(codigoProduto);
+            if (response.Status != HttpStatusCode.OK)
+            {
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                Response.TrySkipIisCustomErrors = true;
+                ViewBag.Erro = response.Content;
+                return View("../Home/Index");
+            }
+
+            ViewBag.Resultado = response.Content;
+            return View("../Home/Index");
         }
     }
 }

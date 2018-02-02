@@ -27,5 +27,14 @@ namespace CursoFeriasSMN.Application.Application
             }
         }
 
+        public Response<string> DeletaProduto(int codigoProduto)
+        {
+            using (var client = new HttpClient())
+            {
+                var response = client.DeleteAsync($"{_enderecoApi}/deletaProduto/{codigoProduto}").Result;
+                return new Response<string>(response.Content.ReadAsStringAsync().Result, response.StatusCode);
+            }
+        }
+
     }
 }
