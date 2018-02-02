@@ -1,7 +1,8 @@
 ﻿using System.Net;
 using System.Web.Mvc;
 using CursoFeriasSMN.Application.Application;
- 
+using CursoFeriasSMN.Application.Models;
+
 namespace CursoFeriasSMN.Controllers
 {
     public class ProdutoController : Controller
@@ -20,6 +21,25 @@ namespace CursoFeriasSMN.Controllers
             }
 
             return View("GridProdutos", response.Content);
+        }
+
+        //public ActionResult CadastrarProduto()
+        //{
+        //    return View("");
+        //}
+
+        public ActionResult CadastrarProduto(ProdutoModel produto)
+        {
+            var response = _produtoApplication.PostProduto(produto);
+
+            if (response.Status != HttpStatusCode.OK)
+            {
+                Response.StatusCode = (int)HttpStatusCode.BadRequest;
+                Response.TrySkipIisCustomErrors = true;
+                return Content(response.ContentAsString);
+            }
+
+            return Content(response.Content);
         }
     }
 }

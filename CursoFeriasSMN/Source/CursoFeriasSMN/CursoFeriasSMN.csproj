@@ -53,6 +53,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -71,8 +72,6 @@
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http">
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
@@ -161,7 +160,15 @@
     <Content Include="Lib\imagens\smnicon.png" />
     <Content Include="Lib\imagens\smnicon.svg" />
     <Content Include="Lib\imagens\smnwallpaper.png" />
+    <Content Include="Lib\scripts\jquery.mask.js" />
+    <Content Include="Lib\scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Lib\scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Lib\scripts\materialize.min.js" />
+    <None Include="Scripts\jquery-1.8.0.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.0.js" />
+    <Content Include="Scripts\jquery-1.8.0.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -195,6 +202,7 @@
     <Content Include="Lib\fonts\roboto\Roboto-Thin.woff2" />
     <None Include="packages.config" />
     <Content Include="Views\Produto\GridProdutos.cshtml" />
+    <Content Include="Views\Produto\FormularioCadastro.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CursoFeriasSMN.Application\CursoFeriasSMN.Application.csproj">

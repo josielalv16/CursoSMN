@@ -33,14 +33,19 @@ namespace CursoFeriasSMN.Repository.Repositories
             return produtos;
         }
 
-        public enum Procedures
+        public string CadastraProduto(Produto produto)
         {
-            SP_SelProdutos,
-            SP_SelDadosProduto,
-            SP_InsProduto,
-            SP_UpdProduto,
-            SP_DelProduto,
-            TRG_HistoricoProduto
+            ExecuteProcedure("[dbo].[SP_InsProduto]");
+            AddParameter("@Nome", produto.Nome);
+            AddParameter("@Preco", produto.Preco);
+            AddParameter("@Estoque", produto.Estoque);
+
+            var retorno = ExecuteNonQueryWithReturn();
+
+            if (retorno == 1)
+                return "Erro ao inserir o produto";
+
+            return null;
         }
     }
 }

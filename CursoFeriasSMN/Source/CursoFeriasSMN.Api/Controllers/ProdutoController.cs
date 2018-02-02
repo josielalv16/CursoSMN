@@ -1,6 +1,8 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using CursoFeriasSMN.Domain.Entidades;
 using CursoFeriasSMN.Repository.Repositories;
 
 namespace CursoFeriasSMN.Api.Controllers
@@ -21,7 +23,25 @@ namespace CursoFeriasSMN.Api.Controllers
             {
                 return BadRequest("Erro ao listar produtos");
             }
-            
+        }
+
+        [HttpPost, Route("cadastraProduto")]
+        public IHttpActionResult PostProduto(Produto produto)
+        {
+            try
+            {
+                var retorno = _produtoRepository.CadastraProduto(produto);
+                if (retorno != null)
+                {
+                    return BadRequest(retorno);
+                }
+
+                return Ok("Produto foi cadastrado com sucesso");
+            }
+            catch
+            {
+                return BadRequest("Algo deu errado!");
+            }
         }
     }
 }
